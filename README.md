@@ -1,11 +1,36 @@
 # whoop-mcp-server
 
-Local MCP server wrapping the [WHOOP Developer API v2](https://developer.whoop.com/). Exposes cycles, recovery, sleep, workouts, profile, and body measurement as typed tools for any MCP-compatible client (Claude Code, Claude Desktop, Cursor, Zed).
+> Your Whoop data, now a first-class citizen in Claude Code, Claude Desktop, Cursor, and Zed.
+
+```
+You: What was my recovery last night, and should I train hard today?
+
+Claude:
+→ whoop_get_cycle_recovery(today)
+→ whoop_get_sleep(last_night)
+
+Recovery 34% (yellow). Sleep 6h 12m, efficiency 81%.
+Strain yesterday 15.1. That's a three-night deficit.
+
+Today's call: Zone 2 only, 45 min max. Save the intervals for Thursday.
+```
+
+That's it. Every number above came from a tool call against your own Whoop data, not a hallucination. No screenshots pasted in, no "let me paste my sleep data" ritual. The model already has it.
+
+## Why this exists
+
+I built this for [Keep](https://keep.markets) — a biometric commitment market where you stake money against your own Whoop score. Settlement has to be exact, audited, and adversary-resistant. That means the agent needs _structured_ access to Whoop, not "look at this JSON I pasted." The MCP gives Claude typed tools with pagination, date ranges, and response-format negotiation.
+
+It also turns out to be the right building block for any agent that reasons about _you_: a morning-brief agent, a training-plan coach, a commitment-market settler, a sleep-forensics debugger. All four work better when the Whoop data is one tool call away.
+
+## What's inside
 
 - Stdio transport, no network listening after OAuth
 - OAuth2 with offline refresh; tokens stored at `~/.whoop-mcp/tokens.json` with `0600` perms
 - Zero runtime deps beyond `@modelcontextprotocol/sdk` + `zod`
 - 11 read-only tools, all annotated `readOnlyHint: true`
+- Refresh-token rotation with in-flight deduplication (concurrent tool calls share one refresh)
+- Markdown + JSON response formats for every tool (default markdown — compact, cache-friendly, token-cheap)
 
 ## Setup
 
