@@ -1,0 +1,32 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.paramxclaudedev/whoop",
+  "description": "Read WHOOP Developer API v2 — profile, body measurements, cycles, recovery, sleep, workouts — as typed tools.",
+  "repository": {
+    "url": "https://github.com/paramxclaudedev/whoop-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@paramxclaudedev/mcp-server-whoop",
+      "version": "1.0.0",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "WHOOP_CLIENT_ID",
+          "description": "WHOOP developer app Client ID (register at https://developer.whoop.com).",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "WHOOP_CLIENT_SECRET",
+          "description": "WHOOP developer app Client Secret.",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

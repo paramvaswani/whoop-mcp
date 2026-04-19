@@ -44,17 +44,20 @@ It also turns out to be the right building block for any agent that reasons abou
 ### 2. Install
 
 ```bash
-git clone https://github.com/<you>/whoop-mcp-server.git
-cd whoop-mcp-server
-pnpm install           # or npm install
-cp .env.example .env   # fill in WHOOP_CLIENT_ID + WHOOP_CLIENT_SECRET
-pnpm run build
+npm install -g @paramxclaudedev/mcp-server-whoop
+```
+
+Or run directly without installing:
+
+```bash
+npx @paramxclaudedev/mcp-server-whoop
 ```
 
 ### 3. Authorize (one-time)
 
 ```bash
-pnpm run auth
+# Clone the repo if you haven't, then:
+npx tsx scripts/auth.ts
 ```
 
 Opens your browser to WHOOP's OAuth consent. On success, tokens land at `~/.whoop-mcp/tokens.json`. The server auto-refreshes access tokens on the fly (refresh tokens rotate; the store is rewritten on every refresh).
@@ -70,8 +73,8 @@ Opens your browser to WHOOP's OAuth consent. On success, tokens land at `~/.whoo
   "mcpServers": {
     "whoop": {
       "type": "stdio",
-      "command": "node",
-      "args": ["/absolute/path/to/whoop-mcp-server/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "@paramxclaudedev/mcp-server-whoop"],
       "env": {
         "WHOOP_CLIENT_ID": "…",
         "WHOOP_CLIENT_SECRET": "…"
@@ -87,8 +90,11 @@ Restart the client. Try: _"Use whoop_get_profile"_ or _"What was my recovery las
 
 ### 5. Smoke-test (optional)
 
+Clone the repo, then:
+
 ```bash
-pnpm exec tsx scripts/smoke-test.ts
+pnpm install
+npx tsx scripts/smoke-test.ts
 ```
 
 Exercises all 11 tools against the live API. Expects `~/.whoop-mcp/tokens.json` to exist.

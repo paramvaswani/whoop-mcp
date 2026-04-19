@@ -1,7 +1,8 @@
 {
-  "name": "whoop-mcp-server",
+  "name": "@paramxclaudedev/mcp-server-whoop",
+  "mcpName": "io.github.paramxclaudedev/whoop",
   "version": "1.0.0",
-  "description": "MCP server for the WHOOP Developer API (v2).",
+  "description": "MCP server for the WHOOP Developer API (v2). Read recovery, sleep, strain, workouts, and body measurements as typed tools.",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
@@ -16,6 +17,29 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "whoop",
+    "biometrics",
+    "health",
+    "wearables",
+    "recovery",
+    "sleep",
+    "fitness"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paramxclaudedev/whoop-mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/paramxclaudedev/whoop-mcp/issues"
+  },
+  "homepage": "https://github.com/paramxclaudedev/whoop-mcp#readme",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.6.1",
