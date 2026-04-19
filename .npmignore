@@ -2,3 +2,9 @@ REGISTRY_KIT.md
 UPSTREAM.md
 *.tgz
 node_modules/
+.env
+*.env
+tokens.json
+scripts/
+*.log
+.DS_Store

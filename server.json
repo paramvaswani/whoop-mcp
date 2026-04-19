@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.paramxclaudedev/whoop",
-  "description": "Read WHOOP Developer API v2 — profile, body measurements, cycles, recovery, sleep, workouts — as typed tools.",
+  "description": "WHOOP API v2 as MCP tools: recovery, sleep, strain, workouts, cycles, profile, and body metrics.",
   "repository": {
     "url": "https://github.com/paramxclaudedev/whoop-mcp",
     "source": "github"
