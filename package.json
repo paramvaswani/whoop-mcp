@@ -1,20 +1,27 @@
 {
   "name": "@paramxclaudedev/mcp-server-whoop",
   "mcpName": "io.github.paramxclaudedev/whoop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for the WHOOP Developer API (v2). Read recovery, sleep, strain, workouts, and body measurements as typed tools.",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
     "whoop-mcp-server": "dist/index.js"
   },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
     "auth": "tsx scripts/auth.ts",
-    "clean": "rm -rf dist"
+    "smoke": "tsx scripts/smoke-test.ts",
+    "clean": "rm -rf dist",
+    "prepare": "pnpm build"
   },
+  "author": "Param Vaswani",
   "engines": {
     "node": ">=18"
   },
